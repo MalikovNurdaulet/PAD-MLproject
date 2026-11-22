@@ -1,7 +1,8 @@
 {
   "test_size": 0.25,
   "random_state": 42,
-  "model": "linear",
-  "alpha": 1.0,
-  "bins": 0
+  "model": "lasso",
+  "alpha": 0.05150678076168122,
+  "bins": 20,
+  "bin_strategy": "quantile"
 }
