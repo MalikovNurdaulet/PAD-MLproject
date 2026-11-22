@@ -357,12 +357,12 @@ exp/bins, exp/ridge и exp/lasso.
 
 ### 📊 Результаты экспериментов
 
-| Модель | CV R² | CV RMSE |
-|---|---:|---:|
-| LinearRegression | 0.8216 | 1.3625 |
-| Linear + KBinsDiscretizer | 0.8245 | 1.3513 |
-| Ridge | 0.8305 | 1.3282 |
-| Lasso | **0.8378** | **1.2995** |
+| Ветка | Модель | Параметры | cv_r2 | cv_rmse | Решение |
+|---|---|---|---:|---:|---|
+| main (baseline) | LinearRegression | Без регуляризации | 0.8216 | 1.3625 | Базовая |
+| exp/bins | LinearRegression | bins=20, quantile | 0.8245 | 1.3513 | Слита |
+| exp/ridge | Ridge | alpha=21.5443, bins=20 | 0.8305 | 1.3282 | Не слита |
+| exp/lasso | Lasso | alpha=0.0515, bins=20 | **0.8378** | **1.2995** | Слита |
 
 ### 📝 Вывод
 

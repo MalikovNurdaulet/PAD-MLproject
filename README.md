@@ -53,3 +53,5 @@
 📄 **[Открыть полный отчёт ЛР6 — результаты EDA](https://github.com/MalikovNurdaulet/PAD-MLproject/blob/main/docs/lab6.md)**
 
 📄 **[Открыть полный отчёт ЛР7 — Data Cleaning](https://github.com/MalikovNurdaulet/PAD-MLproject/blob/main/docs/lab7.md)**
+
+📄 **[Открыть полный отчёт ЛР8 — ML-проект в Git  ](https://github.com/MalikovNurdaulet/PAD-MLproject/blob/main/docs/lab8.md)**
