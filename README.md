@@ -55,4 +55,8 @@
 📄 **[Открыть полный отчёт ЛР7 — Data Cleaning](https://github.com/MalikovNurdaulet/PAD-MLproject/blob/main/docs/lab7.md)**
 
 📄 **[Открыть полный отчёт ЛР8 — ML-проект в Git  ](https://github.com/MalikovNurdaulet/PAD-MLproject/blob/main/docs/lab8.md)**  
-💡 **[Контрольные вопросы ЛР8](https://github.com/MalikovNurdaulet/PAD-MLproject/blob/main/Questions_Answers/q_and_a.md)**
+💡 **[Контрольные вопросы ЛР8](https://github.com/MalikovNurdaulet/PAD-MLproject/blob/main/Questions_Answers/q_and_a8.md)**
+
+
+📄 **[Открыть полный отчёт ЛР9 — Классификация](https://github.com/MalikovNurdaulet/PAD-MLproject/blob/main/docs/lab9.md)**  
+💡 **[Контрольные вопросы ЛР8](https://github.com/MalikovNurdaulet/PAD-MLproject/blob/main/Questions_Answers/q_and_a9.md)**
