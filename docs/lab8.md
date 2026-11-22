@@ -133,7 +133,7 @@
 Суммарный коэффициент остаётся равным 1.0343.
 ### 📈 График парной регрессии (П2)
 
-![Рисунок 1. Парная регрессия G3 по G2](/PAD-MLproject/assets/output8_1.png)
+![Рисунок 1. Парная регрессия G3 по G2](../assets/output8_1.png)
 
 ### 📝 Вывод
 
@@ -167,8 +167,8 @@
 1. График зависимости G3 от absences с усреднением по интервалам.
 2. График зависимости CV R² от числа интервалов для стратегий uniform и quantile.
 
-![Зависимость G3 от absences](/PAD-MLproject/assets/output8_2.png)
-![KBinsDiscretizer](/PAD-MLproject/assets/output8_3.png)
+![Зависимость G3 от absences](../assets/output8_2.png)
+![KBinsDiscretizer](../assets/output8_3.png)
 
 ### 📝 Вывод
 
@@ -206,7 +206,7 @@
 | CV R² | 0.830479 |
 
 ### 📈 График Зависимость Train RMSE и CV RMSE от α для Ridge
-![Train RMSE и CV RMSE от alpha](/PAD-MLproject/assets/output8_4.png)
+![Train RMSE и CV RMSE от alpha](../assets/output8_4.png)
 
 
 ### 📝 Вывод по Ridge
@@ -236,7 +236,7 @@
 | Обнулённых коэффициентов | 53 | 31 |
 
 ### 📈 График Зависимость Train RMSE и CV RMSE от α для Lasso
-![Train RMSE и CV RMSE от alpha](/PAD-MLproject/assets/output8_44.png)
+![Train RMSE и CV RMSE от alpha](../assets/output8_44.png)
 
 
 ### Анализ обнулённых коэффициентов
