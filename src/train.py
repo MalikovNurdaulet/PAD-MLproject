@@ -61,7 +61,7 @@ if params["bins"] > 0:
         KBinsDiscretizer(
             n_bins=params["bins"],
             encode="onehot",
-            strategy="uniform"
+            strategy=params["bin_strategy"]
         )
     )
 
