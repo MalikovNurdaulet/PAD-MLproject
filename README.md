@@ -51,3 +51,5 @@
 Первый этап проекта включает исследование структуры данных, описательную статистику, корреляционный анализ, анализ факторов успеваемости, распределения оценок и выявление потенциальных выбросов.
 
 📄 **[Открыть полный отчёт ЛР6 — результаты EDA](https://github.com/MalikovNurdaulet/PAD-MLproject/blob/main/docs/lab6.md)**
+
+📄 **[Открыть полный отчёт ЛР7 — Data Cleaning](https://github.com/MalikovNurdaulet/PAD-MLproject/blob/main/docs/lab7.md)**
