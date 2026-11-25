@@ -1,9 +1,9 @@
 {
-  "cv_f1": 0.722,
-  "cv_roc_auc": 0.9663,
+  "cv_f1": 0.725,
+  "cv_roc_auc": 0.9161,
   "test_accuracy": 0.9141,
-  "test_precision": 0.72,
-  "test_recall": 0.72,
-  "test_f1": 0.72,
-  "test_roc_auc": 0.9351
+  "test_precision": 0.6774,
+  "test_recall": 0.84,
+  "test_f1": 0.75,
+  "test_roc_auc": 0.9396
 }
