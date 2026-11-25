@@ -1,23 +1,23 @@
-
 import json
 from pathlib import Path
 import joblib
+import numpy as np
 import pandas as pd
 from sklearn.compose import make_column_transformer
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import (accuracy_score, f1_score, precision_score,recall_score, roc_auc_score)
-from sklearn.model_selection import cross_val_score, train_test_split
+from sklearn.metrics import (accuracy_score,f1_score,precision_score,recall_score,roc_auc_score)
+from sklearn.model_selection import (cross_val_predict,cross_val_score,StratifiedKFold,train_test_split)
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.tree import DecisionTreeClassifier
 
 ROOT = Path(__file__).resolve().parents[1]
+
 params = json.loads(
     (ROOT / "params_clf.json").read_text(encoding="utf-8")
 )
 
-# Данные и целевая переменная
 df = pd.read_csv(ROOT / "data" / "clean.csv")
 
 df["at_risk"] = (df["G3"] < 10).astype(int)
@@ -35,21 +35,19 @@ X_train, X_test, y_train, y_test = train_test_split(
     stratify=y
 )
 
+num = make_pipeline(
+    SimpleImputer(strategy="median"),
+    StandardScaler()
+)
+
+cat = make_pipeline(
+    SimpleImputer(strategy="most_frequent"),
+    OneHotEncoder(handle_unknown="ignore")
+)
+
 prep = make_column_transformer(
-    (
-        make_pipeline(
-            SimpleImputer(strategy="median"),
-            StandardScaler()
-        ),
-        num_cols
-    ),
-    (
-        make_pipeline(
-            SimpleImputer(strategy="most_frequent"),
-            OneHotEncoder(handle_unknown="ignore")
-        ),
-        cat_cols
-    )
+    (num, num_cols),
+    (cat, cat_cols)
 )
 
 classifiers = {
@@ -70,21 +68,40 @@ model = make_pipeline(
     classifiers[params["model"]]
 )
 
-# Кросс-валидация
-cv_f1 = cross_val_score(
-    model, X_train, y_train,
-    cv=5, scoring="f1"
-).mean()
+cv = StratifiedKFold(n_splits=5)
+
+oof_proba = cross_val_predict(
+    model,
+    X_train,
+    y_train,
+    cv=cv,
+    method="predict_proba"
+)[:, 1]
+
+threshold = params["threshold"]
+oof_pred = (oof_proba >= threshold).astype(int)
+
+cv_f1 = np.mean([
+    f1_score(
+        y_train.iloc[idx],
+        oof_pred[idx],
+        zero_division=0
+    )
+    for _, idx in cv.split(X_train, y_train)
+])
 
 cv_auc = cross_val_score(
-    model, X_train, y_train,
-    cv=5, scoring="roc_auc"
+    model,
+    X_train,
+    y_train,
+    cv=cv,
+    scoring="roc_auc"
 ).mean()
 
 model.fit(X_train, y_train)
 
 proba = model.predict_proba(X_test)[:, 1]
-pred = (proba >= params["threshold"]).astype(int)
+pred = (proba >= threshold).astype(int)
 
 metrics = {
     "cv_f1": round(float(cv_f1), 4),
@@ -97,12 +114,17 @@ metrics = {
 }
 
 (ROOT / "models").mkdir(exist_ok=True)
+
 joblib.dump(
     model,
     ROOT / "models" / "model_clf.joblib"
 )
+
 (ROOT / "metrics_clf.json").write_text(
     json.dumps(metrics, indent=2) + "\n",
     encoding="utf-8"
 )
-print(params["model"], metrics)
+
+print("Модель:", params["model"])
+print("Порог:", threshold)
+print(metrics)
