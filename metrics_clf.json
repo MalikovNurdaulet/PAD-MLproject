@@ -1,0 +1,9 @@
+{
+  "cv_f1": 0.722,
+  "cv_roc_auc": 0.9663,
+  "test_accuracy": 0.9141,
+  "test_precision": 0.72,
+  "test_recall": 0.72,
+  "test_f1": 0.72,
+  "test_roc_auc": 0.9351
+}
